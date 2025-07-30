@@ -160,7 +160,7 @@ function updateLevel() {
   }
 
   let newLevel = 1;
-  let newSpeed = 240;
+  let newSpeed = 100;
 
   if (score >= 40) {
     newLevel = 5;
