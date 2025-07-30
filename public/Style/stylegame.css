@@ -1,0 +1,304 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0b0018;
+  /* dark purple */
+  color: #e0caff;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+
+h1 {
+  color: #c084fc;
+  text-shadow: 0 0 5px #a855f7;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.winbig {
+  color: #c084fc;
+  text-shadow: 0 0 5px #a855f7;
+  position: absolute;       /* GANTI display: absolute jadi ini */
+  top: 10%;                 /* Tetap sesuai permintaan kamu */
+  left: 50%;                /* Mulai dari tengah horizontal */
+  transform: translateX(-50%); /* Biar teks bener-bener center */
+}
+
+
+#gameBoard {
+  width: 280px;
+  height: 280px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  background-color: #1e0033;
+  border: 3px solid #a855f7;
+  box-shadow: 0 0 15px #a855f7;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: 1px solid #32064f;
+}
+
+.snake {
+  background-color: #8b5cf6;
+  border: 1px solid #7e22ce;
+}
+
+.food {
+  background-color: #ec4899;
+  border: 1px solid #be185d;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.2em;
+  color: #f5d0fe;
+}
+
+.info button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: #3b0764;
+  color: #f3e8ff;
+  border: 2px solid #9333ea;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 5px #a855f7;
+}
+
+.info button:hover {
+  background-color: #6b21a8;
+  border-color: #d946ef;
+}
+
+.buttons {
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  background: #3b0764;
+  color: #f3e8ff;
+  border: 2px solid #9333ea;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 5px #a855f7;
+}
+
+button:hover {
+  background-color: #6b21a8;
+  border-color: #d946ef;
+}
+
+.cell[title] {
+  position: relative;
+}
+
+.cell[title]::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 2px 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.cell[title]:hover::after {
+  opacity: 1;
+}
+
+.snake-head {
+  background-color: burlywood;
+  border: 2px solid #faf5ff;
+}
+
+.snake,
+.snake-head {
+  transition: all 0.15s ease-in-out;
+  animation: slither 0.2s ease;
+}
+
+@keyframes slither {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+#gameBoard {
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.arrow-buttons button {
+  width: 60px;
+  height: 60px;
+  margin: 4px;
+  font-size: 24px;
+  background-color: #3b0764;
+  color: white;
+  border: 2px solid #9333ea;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #a855f7;
+  cursor: pointer;
+}
+
+.arrow-buttons button:hover {
+  background-color: #6b21a8;
+}
+
+.arrow-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.arrow-buttons div {
+  display: flex;
+  gap: 5px;
+}
+
+.snake,
+.snake-head,
+.food {
+  border-radius: 6px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 0, 30, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background-color: #1e0033;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #a855f7;
+}
+
+.popup-content h2 {
+  color: #f472b6;
+  margin-bottom: 10px;
+}
+
+.popup-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #6b21a8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#winPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 99;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  animation: fadeInPopup 0.6s ease forwards;
+}
+
+#winPopup h1.winbig {
+  font-size: 40px;
+  color: #e9d5ff;
+  text-shadow: 0 0 8px #9333ea;
+  margin-bottom: 10px;
+}
+
+#winPopup p {
+  font-size: 22px;
+  color: #ddd6fe;
+  margin: 0;
+}
+
+#winPopup button {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 18px;
+  background: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #9333ea;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#winPopup button:hover {
+  background: #9333ea;
+}
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

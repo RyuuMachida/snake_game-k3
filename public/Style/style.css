@@ -1,0 +1,107 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(#1f1f1f, #111);
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+    }
+
+    nav {
+      width: 100%;
+      padding: 20px 40px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      border-bottom: 1px solid #333;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-left img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #c084fc;
+    }
+
+    .nav-left span {
+      color: white;
+      font-size: 1rem;
+      font-family: 'Segoe UI';
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-login {
+      padding: 8px 18px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-register {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration: none;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 150px;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: #c084fc;
+      text-shadow: 0 0 10px #a855f7;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ddd;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .start-button {
+      margin-top: 40px;
+      font-size: 1.1em;
+      padding: 10px 25px;
+      background: linear-gradient(135deg, #9333ea, #a855f7);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .start-button:hover {
+      background: linear-gradient(135deg, #a855f7, #9333ea);
+    }
