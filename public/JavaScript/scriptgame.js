@@ -153,7 +153,7 @@ let levelDisplay = document.getElementById("levelDisplay");
 let winPopup = document.getElementById("winPopup");
 
 function updateLevel() {
-  if (score >= 100) {
+  if (score >= 50) {
     clearInterval(gameInterval);
     winPopup.style.display = "flex";
     return;
@@ -162,16 +162,16 @@ function updateLevel() {
   let newLevel = 1;
   let newSpeed = 240;
 
-  if (score >= 89) {
+  if (score >= 40) {
     newLevel = 5;
     newSpeed = 100 * 0.2; // 75% faster
-  } else if (score >= 50) {
+  } else if (score >= 30) {
     newLevel = 4;
     newSpeed = 100 * 0.5;
-  } else if (score >= 25) {
+  } else if (score >= 20) {
     newLevel = 3;
     newSpeed = 100 * 0.7;
-  } else if (score >= 15) {
+  } else if (score >= 10) {
     newLevel = 2;
     newSpeed = 100 * 0.9;
   }
