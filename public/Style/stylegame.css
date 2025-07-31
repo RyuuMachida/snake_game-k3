@@ -8,11 +8,9 @@ body {
   background-color: #0b0018;
   background: url('bg.png') no-repeat center center fixed;
   background-size: cover;
-  /* dark purple */
   color: #e0caff;
   margin-top: 30px;
   overflow: hidden;
-  backdrop-filter: blur(2px);
 }
 
 
