@@ -9,7 +9,7 @@
     body {
       background: url('bg.png') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: black;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
@@ -82,7 +82,7 @@
 
     header {
       text-align: center;
-      padding-top: 125px;
+      padding-top: 150px;
     }
 
     header h1 {
@@ -117,33 +117,10 @@
 
     #musicControl {
       position: fixed;
-      bottom: 5%;
-      left: 5%;
+      bottom: 2%;
+      left: 2%;
       z-index: 999;
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #111;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      z-index: 9999;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-      font-size: 14px;
-      animation: slideInUp 0.3s ease;
     }
-
-@keyframes slideInUp {
-  from {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
     #toggleMusicBtn {
       padding: 10px 15px;
