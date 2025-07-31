@@ -3,13 +3,20 @@
       padding: 0;
       box-sizing: border-box;
       user-select: none;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: none;
     }
 
     body {
-      background: radial-gradient(#1f1f1f, #111);
-      font-family: 'Orbitron', sans-serif;
-      color: white;
+      background: url('bg.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      backdrop-filter: blur(4px);
     }
 
     nav {
