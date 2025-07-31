@@ -8,7 +8,7 @@ let direction = 1;
 let food = 0;
 let foodType = null;
 let score = 0;
-let intervalTime = 125; // lebih lambat 20%
+let intervalTime = 115; // lebih lambat 20%
 let gameInterval = null;
 let topScore = localStorage.getItem("topScore") || 0;
 
@@ -173,20 +173,20 @@ function updateLevel() {
   }
 
   let newLevel = 1;
-  let newSpeed = 125;
+  let newSpeed = 115;
 
   if (score >= 25) {
     newLevel = 5;
-    newSpeed = 125 * 0.1; // 75% faster
+    newSpeed = 115 * 0.1; // 75% faster
   } else if (score >= 20) {
     newLevel = 4;
-    newSpeed = 125 * 0.4;
+    newSpeed = 115 * 0.4;
   } else if (score >= 15) {
     newLevel = 3;
-    newSpeed = 125 * 0.6;
+    newSpeed = 115 * 0.6;
   } else if (score >= 10) {
     newLevel = 2;
-    newSpeed = 125 * 0.8;
+    newSpeed = 115 * 0.8;
   }
 
   if (newLevel !== level) {
