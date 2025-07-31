@@ -1,6 +1,7 @@
 const board = document.getElementById("gameBoard");
 const scoreText = document.getElementById("score");
 const topScoreText = document.getElementById("topScore");
+const makanSound = new Audio("makan.mp3");
 
 const boardSize = 20;
 let snake = [];
@@ -73,6 +74,9 @@ function moveSnake() {
     score += foodType.grow;
     scoreText.textContent = `Score: ${score} (${foodType.name})`;
 
+    makanSound.currentTime = 0;
+    makanSound.play();
+    
     if (score > topScore) {
       topScore = score;
       localStorage.setItem("topScore", topScore);
