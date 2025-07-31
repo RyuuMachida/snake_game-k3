@@ -133,8 +133,21 @@ document.addEventListener("keydown", function (e) {
   changeDirection(e);
 });
 
+function setDirection(newDir) {
+  if (direction !== -newDir) {
+    direction = newDir;
+  }
+
+  // Auto start jika belum dimulai
+  if (!gameInterval) {
+    startGame();
+  }
+}
+
 
 function restartGame() {
+  let newLevel = 1;
+
   clearInterval(gameInterval);
   score = 0;
   scoreText.textContent = "Score: 0";
