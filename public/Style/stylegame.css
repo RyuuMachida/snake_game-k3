@@ -334,7 +334,6 @@ button:hover {
   color: #fff;
   cursor: pointer;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease-in-out;
 }
 
 .arrow:hover {
