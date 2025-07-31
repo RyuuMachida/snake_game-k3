@@ -2,6 +2,7 @@ const board = document.getElementById("gameBoard");
 const scoreText = document.getElementById("score");
 const topScoreText = document.getElementById("topScore");
 const makanSound = new Audio("makan.mp3");
+const gameOverSound = new Audio("gameover.mp3");
 
 const boardSize = 20;
 let snake = [];
