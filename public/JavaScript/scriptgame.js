@@ -98,13 +98,13 @@ function changeDirection(e) {
 
   if (isPaused) return;
 
-  if ((key === "arrowUp" || key === "w") && direction !== boardSize) {
+  if ((key === "arrowup" || key === "w") && direction !== boardSize) {
     direction = -boardSize; // atas
-  } else if ((key === "arrowDown" || key === "s") && direction !== -boardSize) {
+  } else if ((key === "arrowdown" || key === "s") && direction !== -boardSize) {
     direction = boardSize; // bawah
-  } else if ((key === "arrowLeft" || key === "a") && direction !== 1) {
+  } else if ((key === "arrowleft" || key === "a") && direction !== 1) {
     direction = -1; // kiri
-  } else if ((key === "arrowRight" || key === "d") && direction !== -1) {
+  } else if ((key === "arrowright" || key === "d") && direction !== -1) {
     direction = 1; // kanan
   }
 }
