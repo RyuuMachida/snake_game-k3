@@ -304,8 +304,8 @@ button:hover {
 }
 .arrow-controls {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 70%;
+  right: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
