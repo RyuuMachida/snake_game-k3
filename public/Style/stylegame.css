@@ -339,7 +339,7 @@ button:hover {
 .horizontal-arrows {
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 300px;
   /* Lebarkan container agar tombol lebih menjauh */
   padding: 0 10px;
 }
