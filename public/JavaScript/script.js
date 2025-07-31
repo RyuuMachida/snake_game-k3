@@ -31,3 +31,18 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+const bgMusic = document.getElementById("bgMusic");
+const toggleMusicBtn = document.getElementById("toggleMusicBtn");
+let musicPlaying = false;
+
+toggleMusicBtn.addEventListener("click", () => {
+  if (musicPlaying) {
+    bgMusic.pause();
+    toggleMusicBtn.textContent = "🎵 Play Music";
+  } else {
+    bgMusic.play();
+    toggleMusicBtn.textContent = "⏸ Pause Music";
+  }
+  musicPlaying = !musicPlaying;
+});
