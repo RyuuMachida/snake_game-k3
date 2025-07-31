@@ -192,6 +192,10 @@ function restartGame() {
 }
 function gameOver() {
   clearInterval(gameInterval);
+
+  gameOverSound.currentTime = 0;
+  gameOverSound.play();
+  
   document.getElementById("finalScore").textContent = score;
   document.getElementById("gameOverPopup").style.display = "flex";
 }
