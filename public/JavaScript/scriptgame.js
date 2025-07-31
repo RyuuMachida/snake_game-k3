@@ -165,15 +165,19 @@ document.addEventListener("keydown", function (e) {
 });
 
 function setDirection(newDir) {
+  if (isPaused) return;
+
+  // Sama seperti keyboard: auto-start hanya kalau belum mulai & tidak pause
+  if (!gameInterval && !isPaused) {
+    startGame();
+  }
+
+  // Hindari gerakan mundur
   if (direction !== -newDir) {
     direction = newDir;
   }
-
-  // Auto start jika belum dimulai
-  if (!gameInterval) {
-    startGame();
-  }
 }
+
 
 
 function restartGame() {
