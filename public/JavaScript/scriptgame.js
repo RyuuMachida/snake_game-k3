@@ -14,7 +14,7 @@ let gameInterval = null;
 let topScore = localStorage.getItem("topScore") || 0;
 
 topScoreText.textContent = "Top Score: " + topScore;
-let maxLength = 70; // maksimal panjang snake
+let maxLength = 55; // maksimal panjang snake
 
 // Buah-buahan unik
 const fruits = [
@@ -76,7 +76,7 @@ function moveSnake() {
 
     makanSound.currentTime = 0;
     makanSound.play();
-    
+
     if (score > topScore) {
       topScore = score;
       localStorage.setItem("topScore", topScore);
@@ -94,14 +94,41 @@ function moveSnake() {
 
 function changeDirection(e) {
   const key = e.key;
+
+  if (isPaused) return;
+
   if (key === "ArrowUp" && direction !== boardSize) direction = -boardSize;
   else if (key === "ArrowDown" && direction !== -boardSize) direction = boardSize;
   else if (key === "ArrowLeft" && direction !== 1) direction = -1;
   else if (key === "ArrowRight" && direction !== -1) direction = 1;
 }
 
+function togglePause() {
+  const startBtn = document.getElementById("startButton");
+  const pausePopup = document.getElementById("pausePopup");
+
+  if (isPaused) {
+    // Resume
+    gameInterval = setInterval(moveSnake, intervalTime);
+    startBtn.textContent = "Pause";
+    isPaused = false;
+    pausePopup.style.display = "none";
+  } else {
+    // Pause
+    clearInterval(gameInterval);
+    gameInterval = null;
+    startBtn.textContent = "Resume";
+    isPaused = true;
+    pausePopup.style.display = "flex";
+  }
+}
+
+
+
 function startGame() {
   if (gameInterval) clearInterval(gameInterval);
+
+  isPaused = false;
 
   snake = [210];
   direction = 1;
@@ -113,8 +140,8 @@ function startGame() {
 
   // Ubah tombol menjadi "Restart"
   const startBtn = document.getElementById("startButton");
-  startBtn.textContent = "Restart";
-  startBtn.onclick = restartGame;
+  startBtn.textContent = "Pause";
+  startBtn.onclick = togglePause;
 
   function restartGame() {
     clearInterval(gameInterval);
@@ -129,7 +156,7 @@ document.addEventListener("keydown", function (e) {
 
   // Jika belum mulai, mulai otomatis saat tekan arah/enter
   const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
-  if (!gameInterval && (arrowKeys.includes(key) || key === "Enter")) {
+  if (!gameInterval && !isPaused && (arrowKeys.includes(key) || key === "Enter")) {
     startGame();
   }
 
@@ -150,6 +177,7 @@ function setDirection(newDir) {
 
 
 function restartGame() {
+  document.getElementById("pausePopup").style.display = "none";
   let newLevel = 1;
 
   clearInterval(gameInterval);
@@ -181,16 +209,16 @@ function updateLevel() {
 
   if (score >= 25) {
     newLevel = 5;
-    newSpeed = 115 * 0.1; // 75% faster
+    newSpeed = 115 * 0.2; // 75% faster
   } else if (score >= 20) {
     newLevel = 4;
-    newSpeed = 115 * 0.4;
+    newSpeed = 115 * 0.5;
   } else if (score >= 15) {
     newLevel = 3;
-    newSpeed = 115 * 0.6;
+    newSpeed = 115 * 0.7;
   } else if (score >= 10) {
     newLevel = 2;
-    newSpeed = 115 * 0.8;
+    newSpeed = 115 * 0.9;
   }
 
   if (newLevel !== level) {
