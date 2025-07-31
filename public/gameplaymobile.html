@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Cacing (Snake)</title>
+  <link rel="stylesheet" href="Style/stylegame.css" />
+</head>
+
+<body>
+  <h1>🐍 Game Cacing</h1>
+
+  <div class="info">
+    <p id="score">Score: 0</p>
+    <button id="startButton" onclick="startGame();">Mulai</button>
+    <p id="topScore">Top Score: 0</p>
+  </div>
+
+  <!-- Level Display -->
+  <div id="levelDisplay"
+    style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%); color: white; font-size: 20px;">
+    Level: 1
+  </div>
+
+  <!-- Win Popup -->
+  <div id="winPopup"
+    style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.85); color: white; justify-content: center; align-items: center; flex-direction: column; z-index: 99;">
+    <h1 class="winbig" style="font-size: 40px;">🎉 Kamu Berhasil! 🎉</h1>
+    <p style="font-size: 24px;">Mendapatkan title: <strong>[ The Winner ]</strong></p>
+    <button onclick="window.location.href='index.html'"
+      style="margin-top: 20px; padding: 10px 20px; font-size: 18px;">Keluar</button>
+    <button onclick="continueGame()" style="margin-top: 20px; padding: 10px 20px; font-size: 18px;">Lanjut Main</button>
+  </div>
+
+  <div id="gameBoard"></div>
+
+  <div class="arrow-controls">
+    <button class="arrow up" onclick="setDirection(-boardSize)">⬆️</button>
+    <div class="horizontal-arrows">
+      <button class="arrow left" onclick="setDirection(-1)">⬅️</button>
+      <button class="arrow right" onclick="setDirection(1)">➡️</button>
+    </div>
+    <button class="arrow down" onclick="setDirection(boardSize)">⬇️</button>
+  </div>
+
+
+  <div id="gameOverPopup" class="popup">
+    <div class="popup-content">
+      <h2>🎮 GAME OVER</h2>
+      <p>Skor kamu: <span id="finalScore"></span></p>
+      <button onclick="startGame(); hidePopup()">Main Lagi</button>
+      <button onclick="location.href='index.html'">Keluar</button>
+    </div>
+  </div>
+
+  <script src="JavaScript/scriptgame.js"></script>
+</body>
