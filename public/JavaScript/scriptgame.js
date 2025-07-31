@@ -94,14 +94,19 @@ function moveSnake() {
 }
 
 function changeDirection(e) {
-  const key = e.key;
+  const key = e.key.toLowerCase(); // Biar "W" dan "w" dianggap sama
 
   if (isPaused) return;
 
-  if (key === "ArrowUp" && direction !== boardSize) direction = -boardSize;
-  else if (key === "ArrowDown" && direction !== -boardSize) direction = boardSize;
-  else if (key === "ArrowLeft" && direction !== 1) direction = -1;
-  else if (key === "ArrowRight" && direction !== -1) direction = 1;
+  if ((key === "arrowUp" || key === "w") && direction !== boardSize) {
+    direction = -boardSize; // atas
+  } else if ((key === "arrowDown" || key === "s") && direction !== -boardSize) {
+    direction = boardSize; // bawah
+  } else if ((key === "arrowLeft" || key === "a") && direction !== 1) {
+    direction = -1; // kiri
+  } else if ((key === "arrowRight" || key === "d") && direction !== -1) {
+    direction = 1; // kanan
+  }
 }
 
 function togglePause() {
