@@ -6,6 +6,8 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #0b0018;
+  background: url('bggame.jpg') no-repeat center center fixed;
+  background-size: cover;
   /* dark purple */
   color: #e0caff;
   margin-top: 30px;
