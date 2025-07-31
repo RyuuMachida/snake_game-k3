@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Ular (Snake)</title>
+  <title>Game Cacing (Snake)</title>
   <link rel="stylesheet" href="Style/stylegame.css" />
-  <link rel="icon" href="favicon.png" type="image/png" />
 </head>
 
 <body>
-  <h1>🐍 Game Ular</h1>
+  <h1>🐍 Game Cacing</h1>
 
   <div class="info">
     <p id="score">Score: 0</p>
@@ -20,7 +19,7 @@
 
   <!-- Level Display -->
   <div id="levelDisplay"
-    style="position: absolute; left: 30px; top: 55%; transform: translateY(-55%); color: white; font-size: 20px;">
+    style="position: absolute; left: 30px; top: 50%; transform: translateY(-50%); color: white; font-size: 20px;">
     Level: 1
   </div>
 
@@ -40,7 +39,7 @@
     <div class="popup-content">
       <h2>🎮 GAME OVER</h2>
       <p>Skor kamu: <span id="finalScore"></span></p>
-      <button onclick="startGame(); hidePopup()">Main Lagi</button>
+      <button onclick="hidePopup(); location.href='gameplay.html'">Main Lagi</button>
       <button onclick="location.href='index.html'">Keluar</button>
     </div>
   </div>
@@ -48,4 +47,3 @@
 
   <script src="JavaScript/scriptgame.js"></script>
 </body>
-<link rel="icon" href="favicon.png" type="image/png" />
