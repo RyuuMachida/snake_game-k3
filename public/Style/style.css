@@ -114,3 +114,28 @@
     .start-button:hover {
       background: linear-gradient(135deg, #a855f7, #9333ea);
     }
+
+    #musicControl {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 999;
+    }
+
+    #toggleMusicBtn {
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(3px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #toggleMusicBtn:hover {
+      background-color: #4338ca;
+      transform: scale(1.05);
+    }
