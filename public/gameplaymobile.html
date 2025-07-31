@@ -34,18 +34,16 @@
     <button onclick="continueGame()" style="margin-top: 20px; padding: 10px 20px; font-size: 18px;">Lanjut Main</button>
   </div>
 
-<div id="gameBoard"></div>
+  <div id="gameBoard"></div>
 
-<div id="controlsContainer">
-  <div class="arrow-row">
-    <button class="arrow-button" data-direction="up">⬆️</button>
+  <div class="arrow-controls">
+    <button class="arrow up" onclick="setDirection(-boardSize)"></button>
+    <div class="horizontal-arrows">
+      <button class="arrow left" onclick="setDirection(-1)"></button>
+      <button class="arrow right" onclick="setDirection(1)"></button>
+    </div>
+    <button class="arrow down" onclick="setDirection(boardSize)"></button>
   </div>
-  <div class="arrow-row">
-    <button class="arrow-button" data-direction="left">⬅️</button>
-    <button class="arrow-button" data-direction="down">⬇️</button>
-    <button class="arrow-button" data-direction="right">➡️</button>
-  </div>
-</div>
 
 
   <div id="gameOverPopup" class="popup">
