@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worm Game K3</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #3a3a52); /* soft dark purple */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 40px;
+      background: linear-gradient(90deg, #b18cd9, #a377d2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6));
+    }
+
+    .menu-button {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #eee;
+      font-size: 17px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin: 10px;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s ease;
+    }
+
+    .menu-button:hover {
+      transform: scale(1.04);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(147, 51, 234, 0.2);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 13px;
+      color: #bbb;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🐍 Worm Game K3</h1>
+
+  <button class="menu-button" onclick="location.href='gameplaymobile.html'">Main di Mobile 📱</button>
+  <button class="menu-button" onclick="location.href='gameplay.html'">Main di Laptop 💻</button>
+
+  <div class="footer">© 2025 Worm Game K3 | ArRaEl 💜</div>
+</body>
+
+</html>
