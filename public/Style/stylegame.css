@@ -1,4 +1,4 @@
-* {
+s* {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -212,7 +212,7 @@ button:hover {
 .snake,
 .snake-head,
 .food {
-  border-radius: 6px;
+  border-radius: 50%;
 }
 
 .popup {
