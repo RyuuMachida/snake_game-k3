@@ -14,20 +14,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // Tombol login jadi Logout
-    const loginBtn = document.getElementById("loginBtn");
+    const loginBtn = document.getElementById("registerBtn");
     if (loginBtn) {
       loginBtn.textContent = "Logout";
       loginBtn.onclick = () => {
         localStorage.removeItem("user");
         location.reload();
       };
-    }
-
-    // Tombol register jadi My Profile
-    const registerBtn = document.getElementById("registerBtn");
-    if (registerBtn) {
-      registerBtn.textContent = "My Profile";
-      registerBtn.onclick = () => window.location.href = "profile.html";
     }
   }
 });
