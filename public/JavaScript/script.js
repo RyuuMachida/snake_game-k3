@@ -22,6 +22,11 @@ window.addEventListener("DOMContentLoaded", () => {
         location.reload();
       };
     }
+
+    const registerBtn = document.getElementById("loginBtn");
+    if (registerBtn) {
+      registerBtn.textContent = ""; // kosongin teks
+    } 
   }
 });
 
