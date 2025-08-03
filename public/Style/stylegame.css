@@ -1,8 +1,10 @@
+/* Mencegah seleksi teks & highlight saat tap */
 * {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Tampilan utama body dan background */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #0b0018;
@@ -13,7 +15,7 @@ body {
   overflow: hidden;
 }
 
-
+/* Judul utama game */
 h1 {
   color: #c084fc;
   text-shadow: 0 0 5px #a855f7;
@@ -21,27 +23,23 @@ h1 {
   top: 15px;
   left: 20px;
   margin: 0;
-  margin-bottom: 50px;
   font-size: 1.5em;
 }
 
+/* Tulisan besar saat menang */
 .winbig {
   color: #c084fc;
   text-shadow: 0 0 5px #a855f7;
   position: absolute;
-  /* GANTI display: absolute jadi ini */
   top: 10%;
-  /* Tetap sesuai permintaan kamu */
   left: 50%;
-  /* Mulai dari tengah horizontal */
   transform: translateX(-50%);
-  /* Biar teks bener-bener center */
 }
 
-
+/* Area papan permainan */
 #gameBoard {
-  width: 280px;
-  height: 280px;
+  width: 400px;
+  height: 400px;
   margin: 20px auto;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
@@ -51,6 +49,7 @@ h1 {
   box-shadow: 0 0 15px #a855f7;
 }
 
+/* Setiap kotak sel pada papan */
 .cell {
   width: 100%;
   height: 100%;
@@ -59,16 +58,34 @@ h1 {
   border: 1px solid #32064f;
 }
 
+/* Tampilan tubuh ular */
 .snake {
-  background-color: #8b5cf6;
+  background-color: #00ff00;
+  transition: opacity 0.1s linear;
   border: 1px solid #7e22ce;
+  border-radius: 50%;
+  animation: snakePulse 0.6s infinite alternate ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
+/* Tampilan kepala ular */
+.snake-head {
+  background-color: #00ff00;
+  z-index: 2;
+  border: 2px solid #faf5ff;
+  border-radius: 50%;
+  animation: snakeHeadMove 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+/* Tampilan makanan */
 .food {
   background-color: #ec4899;
   border: 1px solid #be185d;
+  border-radius: 50%;
 }
 
+/* Info skor dan tombol */
 .info {
   display: flex;
   justify-content: center;
@@ -78,6 +95,7 @@ h1 {
   color: #f5d0fe;
 }
 
+/* Tampilan tombol di info panel */
 .info button {
   padding: 8px 16px;
   font-size: 14px;
@@ -90,15 +108,18 @@ h1 {
   box-shadow: 0 0 5px #a855f7;
 }
 
+/* Hover tombol info */
 .info button:hover {
   background-color: #6b21a8;
   border-color: #d946ef;
 }
 
+/* Area tombol utama di bawah papan */
 .buttons {
   margin-top: 15px;
 }
 
+/* Gaya tombol global */
 button {
   padding: 10px 20px;
   margin: 0 10px;
@@ -112,15 +133,18 @@ button {
   box-shadow: 0 0 5px #a855f7;
 }
 
+/* Hover tombol */
 button:hover {
   background-color: #6b21a8;
   border-color: #d946ef;
 }
 
+/* Tooltip makanan (title) */
 .cell[title] {
   position: relative;
 }
 
+/* Tampilan tooltip */
 .cell[title]::after {
   content: attr(title);
   position: absolute;
@@ -138,33 +162,12 @@ button:hover {
   transition: opacity 0.2s ease;
 }
 
+/* Tampilkan tooltip saat hover */
 .cell[title]:hover::after {
   opacity: 1;
 }
 
-.snake-head {
-  background-color: burlywood;
-  border: 2px solid #faf5ff;
-}
-
-.snake,
-.snake-head {
-  transition: all 0.15s ease-in-out;
-  animation: slither 0.2s ease;
-}
-
-@keyframes slither {
-  0% {
-    transform: scale(0.8);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
+/* Container utama (papan + kontrol) */
 .main-container {
   display: flex;
   justify-content: center;
@@ -173,19 +176,14 @@ button:hover {
   flex-wrap: wrap;
 }
 
-#gameBoard {
-  width: 400px;
-  height: 400px;
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(20, 1fr);
-}
-
+/* Panel kontrol di samping papan */
 .control-panel {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Tombol arah (atas/bawah/kiri/kanan) */
 .arrow-buttons button {
   width: 60px;
   height: 60px;
@@ -199,10 +197,12 @@ button:hover {
   cursor: pointer;
 }
 
+/* Hover tombol arah */
 .arrow-buttons button:hover {
   background-color: #6b21a8;
 }
 
+/* Grup tombol arah */
 .arrow-buttons {
   display: flex;
   flex-direction: column;
@@ -210,17 +210,13 @@ button:hover {
   gap: 5px;
 }
 
+/* Baris atas & bawah tombol arah */
 .arrow-buttons div {
   display: flex;
   gap: 5px;
 }
 
-.snake,
-.snake-head,
-.food {
-  border-radius: 50%;
-}
-
+/* Popup (game over / win) */
 .popup {
   position: fixed;
   top: 0;
@@ -234,6 +230,7 @@ button:hover {
   z-index: 999;
 }
 
+/* Konten popup */
 .popup-content {
   background-color: #1e0033;
   padding: 30px;
@@ -242,11 +239,13 @@ button:hover {
   box-shadow: 0 0 20px #a855f7;
 }
 
+/* Judul dalam popup */
 .popup-content h2 {
   color: #f472b6;
   margin-bottom: 10px;
 }
 
+/* Tombol dalam popup */
 .popup-content button {
   margin: 10px;
   padding: 10px 20px;
@@ -258,6 +257,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* Popup kemenangan */
 #winPopup {
   display: none;
   position: fixed;
@@ -276,6 +276,7 @@ button:hover {
   animation: fadeInPopup 0.6s ease forwards;
 }
 
+/* Judul besar di popup menang */
 #winPopup h1.winbig {
   font-size: 40px;
   color: #e9d5ff;
@@ -283,12 +284,14 @@ button:hover {
   margin-bottom: 10px;
 }
 
+/* Deskripsi di bawah judul */
 #winPopup p {
   font-size: 22px;
   color: #ddd6fe;
   margin: 0;
 }
 
+/* Tombol di popup menang */
 #winPopup button {
   margin-top: 30px;
   padding: 12px 28px;
@@ -302,10 +305,12 @@ button:hover {
   transition: 0.2s;
 }
 
+/* Hover tombol menang */
 #winPopup button:hover {
   background: #9333ea;
 }
 
+/* Animasi muncul popup */
 @keyframes fadeInPopup {
   from {
     opacity: 0;
@@ -318,10 +323,11 @@ button:hover {
   }
 }
 
+/* Panel kontrol arah */
 .arrow-controls {
   position: fixed;
   bottom: 15%;
-  right: 22%;
+  right: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -330,20 +336,20 @@ button:hover {
   padding: 25px;
   border-radius: 20px;
   background: rgba(40, 20, 60, 0.15);
-  /* ungu gelap transparan */
   backdrop-filter: blur(14px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* Tombol panah kiri & kanan */
 .horizontal-arrows {
   display: flex;
   justify-content: space-between;
-  width: 210px;
-  /* Lebarkan container agar tombol lebih menjauh */
+  width: 200px;
   padding: 0 10px;
 }
 
+/* Tombol panah utama */
 .arrow {
   width: 64px;
   height: 64px;
@@ -351,34 +357,29 @@ button:hover {
   border: none;
   border-radius: 50%;
   background: linear-gradient(145deg, #4b0082, #1e1e2f);
-  /* deep purple gradient */
   color: #fff;
   cursor: pointer;
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.7),
-    0 0 10px rgba(138, 43, 226, 0.3);
-  /* ungu glow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3);
   transition: all 0.2s ease;
   outline: none;
 }
 
+/* Geser kiri/kanan sedikit */
 .arrow.left {
   margin-left: -5px;
-  /* atau -10px jika masih terlalu sempit */
 }
 
 .arrow.right {
   margin-right: -5px;
 }
 
+/* Efek saat ditekan */
 .arrow:active {
   transform: scale(0.9);
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.6),
-    0 0 6px rgba(186, 85, 211, 0.5);
-  /* glow ungu lebih kecil saat ditekan */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 6px rgba(186, 85, 211, 0.5);
 }
 
+/* Popup tambahan */
 .popup12 {
   position: fixed;
   top: 0;
@@ -395,44 +396,53 @@ button:hover {
   z-index: 999;
 }
 
+/* Judul popup tambahan */
 .popup12 h2 {
   font-size: 2em;
   margin-bottom: 20px;
 }
 
+/* Tombol popup tambahan */
 .popup12 button {
   padding: 10px 20px;
   margin: 10px;
   font-size: 1em;
   cursor: pointer;
 }
-#controlsContainer {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+/* Animasi denyut tubuh ular */
+@keyframes snakePulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.arrow-row {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
+/* Animasi kepala ular bergerak */
+@keyframes snakeHeadMove {
+  0% {
+    transform: scale(0.8) rotate(-3deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
-.arrow-button {
-  background: #444;
-  border: none;
-  color: white;
-  font-size: 24px;
-  width: 60px;
-  height: 60px;
-  margin: 5px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-  transition: transform 0.1s ease;
+/* Tampilan musuh */
+.enemy {
+  background-color: #ff0000;
+  border: 1px solid #990000;
+  border-radius: 50%;
 }
 
-.arrow-button:active {
-  transform: scale(0.9);
+/* Tampilan rintangan (kayu) */
+.obstacle {
+  background-color: saddlebrown;
+  border: 1px solid #3e1f00;
 }
