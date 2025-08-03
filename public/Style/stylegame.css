@@ -446,3 +446,89 @@ button:hover {
   background-color: saddlebrown;
   border: 1px solid #3e1f00;
 }
+@media (max-width: 600px) {
+  body {
+    margin-top: 10px;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 1.2em;
+    top: 10px;
+    left: 10px;
+  }
+
+  #gameBoard {
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+
+  .arrow-controls {
+    bottom: 8%;
+    right: 10%;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .arrow {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .horizontal-arrows {
+    width: 140px;
+    padding: 0 5px;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1em;
+  }
+
+  .info button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  #winPopup h1.winbig {
+    font-size: 28px;
+  }
+
+  #winPopup p {
+    font-size: 18px;
+  }
+
+  #winPopup button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .popup-content {
+    padding: 20px;
+  }
+
+  .popup-content h2 {
+    font-size: 1.5em;
+  }
+
+  .popup-content button {
+    font-size: 14px;
+  }
+
+  .popup12 h2 {
+    font-size: 1.5em;
+  }
+
+  .popup12 button {
+    font-size: 14px;
+  }
+
+  #levelDisplay {
+    font-size: 16px;
+    left: 10px;
+  }
+}
