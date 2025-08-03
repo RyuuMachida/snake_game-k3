@@ -35,24 +35,24 @@ const toggleMusicBtn = document.getElementById("toggleMusicBtn");
 
 const playlist = [
   {
-    src: "JavaScript/Music/Tabola Bale.mp3",
+    src: "JavaScript/Tabola Bale.mp3",
     title: "Tabola Bale",
-    artwork: "JavaScript/Thumbnail/cover1.png"
+    artwork: "JavaScript/cover1.png"
   },
   {
-    src: "JavaScript/Music/Kasih Aba-aba.mp3",
+    src: "JavaScript/Kasih Aba-aba.mp3",
     title: "Kasih Aba-aba",
-    artwork: "JavaScript/Thumbnail/cover2.png"
+    artwork: "JavaScript/cover2.png"
   },
   {
-    src: "JavaScript/Music/Calon Mantu Terbaik MamaMu.mp3",
+    src: "JavaScript/Calon Mantu Terbaik MamaMu.mp3",
     title: "Calon Mantu Terbaik MamaMu",
-    artwork: "JavaScript/Thumbnail/cover3.png"
+    artwork: "JavaScript/cover3.png"
   },
   {
-    src: "JavaScript/Music/DJ Laptop.mp3",
+    src: "JavaScript/DJ Laptop.mp3",
     title: "DJ Trend Laptop",
-    artwork: "JavaScript/Thumbnail/cover4.png"
+    artwork: "JavaScript/cover4.png"
   }
 ];
 
