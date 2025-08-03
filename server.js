@@ -1,118 +1,136 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const cors = require('cors');
-const multer = require('multer');
+const path = require('path');
 const fs = require('fs');
+const multer = require('multer');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
-const path = require("path");
 
 const User = require('./models/User');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Serve static files from public
-app.use(express.static(path.join(__dirname, "public")));
 
-// Route untuk halaman utama
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
+// Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
+app.use(express.static(path.join(__dirname, "public")));
+app.use('/uploads', express.static('public/uploads'));
+app.use(session({
+  secret: 'rahasia-super-aman',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // true jika pakai HTTPS
+}));
 
-// 📦 MongoDB Atlas connection
+// Multer setup
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, "public/uploads"),
+  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+});
+const upload = multer({ storage });
+
+// MongoDB Connect
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log("✅ Connected to MongoDB"))
   .catch(err => console.error("❌ MongoDB connection error:", err));
-  
-// 📷 Multer config
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    const uniqueName = Date.now() + '-' + file.originalname;
-    cb(null, uniqueName);
-  }
-});
-const upload = multer({ storage });
 
-app.put('/api/profile/:username', async (req, res) => {
-  const { username } = req.params;
-  const { newUsername, newPassword } = req.body;
-
-  const user = await User.findOne({ username });
-  if (!user) return res.status(404).json({ message: "User not found" });
-
-  if (newUsername) user.username = newUsername;
-  if (newPassword) user.password = await bcrypt.hash(newPassword, 10);
-
-  await user.save();
-  res.json({ message: "Profile updated" });
+// Serve halaman utama
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-
-// 📝 Register
+// 🔐 Register
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
-
   if (!username || !password)
-    return res.status(400).json({ message: "Username and password required" });
+    return res.status(400).json({ message: "Username dan password wajib diisi" });
 
   const existingUser = await User.findOne({ username });
   if (existingUser)
-    return res.status(409).json({ message: "Username already exists" });
+    return res.status(409).json({ message: "Username sudah digunakan" });
 
-  const newUser = new User({ username, password });
-
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = new User({ username, password: hashedPassword });
   await newUser.save();
-  res.status(201).json({ message: "User registered successfully" });
+  res.status(201).json({ message: "Registrasi berhasil" });
 });
 
-// 🔐 Login
+// 🔑 Login
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
-
   const user = await User.findOne({ username });
-  if (!user) return res.status(404).json({ message: "User not found" });
+  if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
 
-  const isMatch = password === user.password;
-  if (!isMatch) return res.status(401).json({ message: "Incorrect password" });
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) return res.status(401).json({ message: "Password salah" });
+
+  req.session.userId = user._id;
 
   res.status(200).json({
     success: true,
-    message: "Login successful",
+    message: "Login berhasil",
     user: {
       username: user.username,
-      photo: user.photo
+      profilePhoto: user.profilePhoto
     }
   });
 });
 
-// 📤 Upload / change profile photo
-app.post('/api/upload-photo/:username', upload.single('photo'), async (req, res) => {
-  const { username } = req.params;
-  const photoPath = req.file ? `/uploads/${req.file.filename}` : "";
+// 👤 Get profile
+app.get("/me", async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ message: "Unauthorized" });
 
-  const user = await User.findOne({ username });
-  if (!user) return res.status(404).json({ message: "User not found" });
+  const user = await User.findById(req.session.userId);
+  if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
 
-  // Hapus foto lama jika ada
-  if (user.photo && fs.existsSync("." + user.photo)) {
-    fs.unlinkSync("." + user.photo);
-  }
-
-  user.photo = photoPath;
-  await user.save();
-
-  res.json({ message: "Profile photo updated", photo: photoPath });
+  res.json({
+    username: user.username,
+    profilePhoto: user.profilePhoto
+  });
 });
 
-// 🟢 Start server
+// ✏️ Update profile (username & password)
+app.put("/api/profile", async (req, res) => {
+  const { newUsername, newPassword } = req.body;
+  if (!req.session.userId) return res.status(401).json({ message: "Unauthorized" });
+
+  const update = {};
+  if (newUsername) update.username = newUsername;
+  if (newPassword) update.password = await bcrypt.hash(newPassword, 10);
+
+  try {
+    await User.findByIdAndUpdate(req.session.userId, update);
+    res.json({ message: "Profil berhasil diperbarui" });
+  } catch (err) {
+    res.status(500).json({ message: "Gagal memperbarui profil", error: err.message });
+  }
+});
+
+// 📸 Upload/update profile photo
+app.post("/api/upload-photo", upload.single("photo"), async (req, res) => {
+  if (!req.session.userId) return res.status(401).json({ message: "Unauthorized" });
+
+  const user = await User.findById(req.session.userId);
+  if (!user) return res.status(404).json({ message: "User tidak ditemukan" });
+
+  // Hapus foto lama jika ada
+  if (user.profilePhoto && fs.existsSync("public" + user.profilePhoto)) {
+    fs.unlinkSync("public" + user.profilePhoto);
+  }
+
+  const photoUrl = "/uploads/" + req.file.filename;
+  user.profilePhoto = photoUrl;
+  await user.save();
+
+  res.json({ message: "Foto berhasil diupload", photoUrl });
+});
+
+// 🚀 Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
