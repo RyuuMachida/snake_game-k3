@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const registerBtn = document.getElementById("loginBtn");
     if (registerBtn) {
       registerBtn.textContent = ""; // kosongin teks
-    } 
+    }
   }
 });
 
@@ -74,6 +74,27 @@ toggleMusicBtn.addEventListener("click", () => {
   }
   musicPlaying = !musicPlaying;
 });
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+  loadTrack(currentTrack);
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  currentTrack = (currentTrack + 1) % playlist.length;
+  loadTrack(currentTrack);
+});
+
+function loadTrack(index) {
+  bgMusic.src = playlist[index].src;
+  updateMediaSession(playlist[index]);
+  if (musicPlaying) {
+    bgMusic.play();
+  }
+  toggleMusicBtn.textContent = musicPlaying ? "⏸ Pause Music" : "🎵 Play Music";
+  document.getElementById("trackTitle").textContent = `🎶 Now Playing: ${playlist[index].title}`;
+}
+
 
 // Otomatis lanjut ke lagu berikutnya
 bgMusic.addEventListener("ended", () => {
