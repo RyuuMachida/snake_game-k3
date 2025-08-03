@@ -139,3 +139,21 @@
       background-color: #4338ca;
       transform: scale(1.05);
     }
+    #musicControl button {
+      padding: 10px 15px;
+      margin-right: 5px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(3px);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    #musicControl button:hover {
+      background-color: #4338ca;
+      transform: scale(1.05);
+    }
