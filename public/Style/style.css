@@ -157,3 +157,68 @@
       background-color: #4338ca;
       transform: scale(1.05);
     }
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      margin-right: 15px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Transform saat aktif (jadi X) */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(12px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-12px);
+    }
+      /* Sidebar menu */
+      .sidebar {
+        position: fixed;
+        top: 12%;
+        left: -220px;
+        width: 200px;
+        height: calc(100% - 60px);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        padding-top: 80px;
+        /* kasih jarak dari atas */
+        transition: left 0.3s ease;
+        z-index: 1000;
+        backdrop-filter: blur(2px);
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 15px 20px;
+      }
+
+      .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        font-family: Orbitron, sans-serif;
+        display: block;
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
