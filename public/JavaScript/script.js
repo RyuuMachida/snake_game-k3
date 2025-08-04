@@ -134,3 +134,12 @@ function updateMediaSession(track) {
     });
   }
 }
+
+// Toggle Sidebar Menu
+const hamburger = document.getElementById("hamburger");
+const sidebar = document.getElementById("sidebarMenu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  sidebar.classList.toggle("active");
+});
