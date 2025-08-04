@@ -80,4 +80,5 @@ Copy code
 - Tambahkan instruksi deploy jika kamu host ke GitHub Pages.
 
 Kalau kamu ingin konten README yang lebih lengkap—misalnya dokumentasi game logic, referensi keyboard control, atau cara build ke aplikasi mobile—tinggal bilang ya!
-::contentReference[oaicite:0]{index=0}
+
+**CopyRight © 2025 Snake Game K3 | RyuuMachida 🎮**
