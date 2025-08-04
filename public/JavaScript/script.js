@@ -99,11 +99,7 @@ function loadTrack(index) {
 // Otomatis lanjut ke lagu berikutnya
 bgMusic.addEventListener("ended", () => {
   currentTrack = (currentTrack + 1) % playlist.length;
-  bgMusic.src = playlist[currentTrack].src;
-  updateMediaSession(playlist[currentTrack]);
-  if (musicPlaying) {
-    bgMusic.play();
-  }
+  loadTrack(currentTrack); // pakai fungsi agar semua update
 });
 
 // Atur tampilan media di lockscreen
