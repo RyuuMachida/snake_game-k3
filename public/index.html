@@ -13,6 +13,11 @@
 <body>
   <nav>
     <div class="nav-left">
+      <div id="hamburger" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <img src="default-logo.png" alt="profile" id="userProfilePic">
       <span id="greeting">Halo, Guest!</span>
     </div>
@@ -24,17 +29,28 @@
 
   <header>
     <h1>Snake Game K3</h1>
-    <p>Selamat datang di game ular paling seru! Tantang temanmu, raih skor tertinggi, dan menangkan gelar <strong><br>The
-        Winner🥇</strong></p>
+    <p>Selamat datang di game ular paling seru! Tantang temanmu, raih skor tertinggi, dan menangkan gelar
+      <strong><br>The
+        Winner🥇</strong>
+    </p>
     <button class="start-button" onclick="window.location.href='jembatan.html'">Mulai Main</button>
   </header>
   <audio id="bgMusic"></audio>
-  
+
   <div id="musicControl">
     <p id="trackTitle" style="color: white; font-family: Orbitron; margin-top: 5px;">🎶 Now Playing: Tabola Bale</p>
     <button id="prevBtn">↩</button>
     <button id="toggleMusicBtn">🎵 Play Music</button>
     <button id="nextBtn">↪</button>
+  </div>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebarMenu" class="sidebar">
+    <ul>
+      <li><a href="guide.html">📘 Panduan</a></li>
+      <li><a href="reviewers,html">🧑‍💻 Reviewer</a></li>
+      <li><a href="socialmedia.html">🌐 Social MediaDev</a></li>
+    </ul>
   </div>
 
   <script src="JavaScript/script.js"></script>
