@@ -1,7 +1,3 @@
-Tentu! Berikut adalah template README.md yang bisa kamu gunakan di GitHub repo kamu (snake_game‑k3) – tinggal copy ke README.md dan sesuaikan bila perlu:
-
-markdown
-Copy code
 # Snake Game K3 🎮
 
 Sebuah **Snake Game modern** yang dibangun menggunakan HTML, CSS, dan JavaScript — lengkap dengan musik latar, kontrol media, menu navigasi, dan UI yang responsif.
