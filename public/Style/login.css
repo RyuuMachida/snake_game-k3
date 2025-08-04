@@ -1,4 +1,12 @@
-   body {
+
+    input:-webkit-autofill {
+     -webkit-box-shadow: 0 0 0px 1000px #1e1e2f inset; /* ganti dengan warna background input kamu */
+     -webkit-text-fill-color: #ffffff; /* warna teks */
+     transition: background-color 5000s ease-in-out 0s;
+     border-radius: 8px; /* kalau input kamu rounded */
+    }
+
+     body {
       font-family: 'Segoe UI', sans-serif;
       background: url('bg.png') no-repeat center center fixed;
       background-size: cover;
@@ -116,4 +124,5 @@
 
     label {
       color: #ddd;
+
     }
