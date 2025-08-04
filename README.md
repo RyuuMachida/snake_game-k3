@@ -69,9 +69,6 @@ Lisensi MIT — bebas digunakan, modifikasi, dan distribusikan dengan syarat men
 
 ✨ Semoga enjoy bermain dan mengembangkan Snake Game K3 ini! ✨
 
-yaml
-Copy code
-
 ---
 
 ### 🧠 Tips Tambahan:
