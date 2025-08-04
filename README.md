@@ -56,27 +56,6 @@ Menu muncul dari kanan layar saat ikon hamburger diklik. Ikon berubah menjadi "X
 👨‍💻 Profil User
 User disimpan di localStorage — nama & foto muncul di navbar saat login. Logout menghapus user.
 
-📝 Contoh Kode HTML Navbar dengan Sidebar & Hamburger
-html
-Copy code
-<nav>
-  <div class="nav-left">
-    <div id="hamburger" class="hamburger"><span></span><span></span><span></span></div>
-    <img id="userProfilePic" src="default-logo.png" alt="profile">
-    <span id="greeting">Halo, Guest!</span>
-  </div>
-  <div class="nav-right">
-    <button id="loginBtn">Register</button>
-    <button id="registerBtn">Login</button>
-  </div>
-</nav>
-<div id="sidebarMenu" class="sidebar">
-  <ul>
-    <li><a href="#">Panduan</a></li>
-    <li><a href="#">Reviewer</a></li>
-    <li><a href="#">Social Media Dev</a></li>
-  </ul>
-</div>
 📁 Pengembangan
 Tambahkan commit detail di script.js untuk fitur baru seperti shuffle, repeat, atau visualisasi musik.
 
