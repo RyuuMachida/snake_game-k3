@@ -2,185 +2,202 @@
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panduan - Snake Game K3</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Style/style.css" />
-  <style>
-    body {
-      background-color: #0d0d1f;
-      color: #ffffff;
-      font-family: 'Orbitron', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panduan - Snake Game K3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/style.css" />
+    <style>
+        body {
+            background-color: #0d0d1f;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    main {
-      width: 100%;
-      max-width: 900px;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        main {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: #d98eff;
-    }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #d98eff;
+        }
 
-    p {
-      font-size: 16px;
-      color: #cccccc;
-    }
+        p {
+            font-size: 16px;
+            color: #cccccc;
+        }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 10px;
-    }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-    .guide-box {
-      background-color: #1a1a2e;
-      border-radius: 12px;
-      padding: 15px;
-      width: 200px;
-      height: 80px;
-      box-shadow: 0 0 10px #3e3e6b;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      position: relative;
-    }
+        .guide-box {
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            padding: 15px;
+            width: 200px;
+            height: 80px;
+            box-shadow: 0 0 10px #3e3e6b;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
 
-    .guide-box.active {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-    }
+        .guide-box.active {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
 
-    .guide-box h2 {
-      font-size: 18px;
-      color: #a167ff;
-      margin-top: 0;
-    }
+        .guide-box h2 {
+            font-size: 18px;
+            color: #a167ff;
+            margin-top: 0;
+        }
 
-    .guide-box ul {
-      margin: 10px 0 0 0;
-      padding-left: 20px;
-      display: none;
-    }
+        .guide-box ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            display: none;
+        }
 
-    .guide-box.active ul {
-      display: block;
-    }
+        .guide-box.active ul {
+            display: block;
+        }
 
-    .back-btn {
-      display: block;
-      text-align: center;
-      margin: 50px auto 20px;
-      padding: 10px 20px;
-      border: 2px solid #a167ff;
-      border-radius: 8px;
-      color: #a167ff;
-      background-color: transparent;
-      font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
-      width: fit-content;
-      transition: background-color 0.3s, color 0.3s;
-    }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin: 50px auto 20px;
+            padding: 10px 20px;
+            border: 2px solid #a167ff;
+            border-radius: 8px;
+            color: #a167ff;
+            background-color: transparent;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    .back-btn:hover {
-      background-color: #a167ff;
-      color: #fff;
-    }
+        .back-btn:hover {
+            background-color: #a167ff;
+            color: #fff;
+        }
 
-    @media (max-width: 600px) {
-      .guide-box {
-        width: 100%;
-        height: 70px;
-      }
+        @media (max-width: 600px) {
+            .guide-box {
+                width: 100%;
+                height: 70px;
+            }
 
-      .back-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-      }
-    }
-  </style>
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        .guide-img {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: none;
+            /* default disembunyiin */
+        }
+
+        .guide-box.active .guide-img {
+            display: block;
+            /* muncul saat box aktif */
+        }
+    </style>
 </head>
 
 <body>
-  <main>
-    <header>
-      <h1>📘 Panduan Game Snake K3</h1>
-      <p>Klik bagian di bawah untuk melihat panduan lebih lengkap</p>
-    </header>
+    <main>
+        <header>
+            <h1>📘 Panduan Game Snake K3</h1>
+            <p>Klik bagian di bawah untuk melihat panduan lebih lengkap</p>
+        </header>
 
-    <div class="container">
-      <div class="guide-box" onclick="toggleBox(this)">
-        <h2>🎮 Cara Bermain</h2>
-        <ul>
-          <li>Gunakan tombol panah atau kontrol layar untuk gerak.</li>
-          <li>Hindari menabrak diri sendiri, AI, atau rintangan.</li>
-          <li>Makan buah untuk menambah panjang dan skor.</li>
-          <li>Buah punya efek berbeda (1-3 segmen).</li>
-        </ul>
-      </div>
+        <div class="container">
+            <div class="guide-box" onclick="toggleBox(this)">
+                <h2>🎮 Cara Bermain</h2>
+                <img src="displaygame.png" alt="Musuh dan Rintangan" class="guide-img" />
+                <ul>
+                    <li>Gunakan tombol panah atau kontrol layar untuk gerak.</li>
+                    <li>Hindari menabrak diri sendiri, AI, atau rintangan.</li>
+                    <li>Makan buah untuk menambah panjang dan skor.</li>
+                    <li>Buah punya efek berbeda (1-3 segmen).</li>
+                </ul>
+            </div>
 
-      <div class="guide-box" onclick="toggleBox(this)">
-        <h2>🤖 Musuh & Rintangan</h2>
-        <ul>
-          <li>Musuh AI muncul tiap pergantian level.</li>
-          <li>Tidak langsung muncul tiap makan buah.</li>
-          <li>Rintangan acak tapi tetap bisa dilewati.</li>
-        </ul>
-      </div>
+            <div class="guide-box" onclick="toggleBox(this)">
+                <h2>🤖 Musuh & Rintangan</h2>
+                <img src="enemygame.png" alt="Musuh dan Rintangan" class="guide-img" />
+                <ul>
+                    <li>Musuh AI muncul tiap pergantian level.</li>
+                    <li>Tidak langsung muncul tiap makan buah.</li>
+                    <li>Rintangan acak tapi tetap bisa dilewati.</li>
+                </ul>
+            </div>
 
-      <div class="guide-box" onclick="toggleBox(this)">
-        <h2>📱 Kontrol Mobile</h2>
-        <ul>
-          <li>Gunakan tombol arah di sisi kanan layar.</li>
-          <li>Sudah responsif, tidak perlu scroll saat main.</li>
-        </ul>
-      </div>
+            <div class="guide-box" onclick="toggleBox(this)">
+                <h2>📱 Kontrol Mobile</h2>
+                <img src="mobilegame.png" alt="Musuh dan Rintangan" class="guide-img" />
+                <ul>
+                    <li>Gunakan tombol arah di sisi kanan layar.</li>
+                    <li>Sudah responsif, tidak perlu scroll saat main.</li>
+                </ul>
+            </div>
 
-      <div class="guide-box" onclick="toggleBox(this)">
-        <h2>📊 Skor & Akun</h2>
-        <ul>
-          <li>Login untuk simpan skor tertinggi otomatis.</li>
-          <li>Skor tetap tersimpan saat keluar game.</li>
-        </ul>
-      </div>
-    </div>
+            <div class="guide-box" onclick="toggleBox(this)">
+                <h2>📊 Skor & Akun</h2>
+                <img src="accountgame.jpg" alt="Musuh dan Rintangan" class="guide-img" />
+                <ul>
+                    <li>Login untuk simpan skor tertinggi otomatis.</li>
+                    <li>Skor tetap tersimpan saat keluar game.</li>
+                </ul>
+            </div>
+        </div>
 
-    <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
-  </main>
+        <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+    </main>
 
-  <script>
-    function toggleBox(clickedBox) {
-      const allBoxes = document.querySelectorAll('.guide-box');
-      allBoxes.forEach(box => {
-        if (box !== clickedBox) {
-          box.classList.remove('active');
+    <script>
+        function toggleBox(clickedBox) {
+            const allBoxes = document.querySelectorAll('.guide-box');
+            allBoxes.forEach(box => {
+                if (box !== clickedBox) {
+                    box.classList.remove('active');
+                }
+            });
+            clickedBox.classList.toggle('active');
         }
-      });
-      clickedBox.classList.toggle('active');
-    }
-  </script>
+    </script>
 </body>
 
 </html>
