@@ -23,6 +23,12 @@
 
         h1 {
             font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #cccccc;
         }
 
         .container {
@@ -67,24 +73,36 @@
             display: block;
         }
 
-        .back {
+        .back-btn {
             display: block;
             text-align: center;
-            margin: 40px auto 10px;
+            margin: 40px auto 0;
+            padding: 10px 20px;
+            border: 2px solid #a167ff;
+            border-radius: 8px;
             color: #a167ff;
-            font-weight: bold;
+            background-color: transparent;
             font-size: 16px;
+            font-weight: bold;
             text-decoration: none;
+            width: fit-content;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .back:hover {
-            text-decoration: underline;
+        .back-btn:hover {
+            background-color: #a167ff;
+            color: #fff;
         }
 
         @media (max-width: 600px) {
             .guide-box {
                 width: 100%;
                 height: 70px;
+            }
+
+            .back-btn {
+                font-size: 14px;
+                padding: 8px 16px;
             }
         }
     </style>
@@ -133,7 +151,7 @@
         </div>
     </div>
 
-    <a href="index.html" class="back">← Kembali ke Beranda</a>
+    <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
 
     <script>
         function toggleBox(clickedBox) {
