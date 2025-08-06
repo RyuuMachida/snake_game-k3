@@ -54,6 +54,28 @@
         }
 
         .guide-box {
+            transition: all 0.4s ease, transform 0.3s ease;
+        }
+
+        .guide-box:hover }
+        transform: translateY(-5px) scale(1.02);
+        }
+
+        .guide-box ul,
+        .guide-img {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            overflow: hidden;
+        }
+
+        .guide-box.active ul,
+        .guide-box.active .guide-img {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .guide-box {
             background-color: #1a1a2e;
             border-radius: 12px;
             padding: 15px;
@@ -201,3 +223,4 @@
 </body>
 
 </html>
+
